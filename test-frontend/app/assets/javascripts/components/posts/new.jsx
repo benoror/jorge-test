@@ -6,7 +6,8 @@ var NewPost = React.createClass({
 
   getInitialState: function(){
     return{
-      authors: '',
+      author_id: '',
+      authors: [],
       body: '',
       title: ''
     };
@@ -28,22 +29,43 @@ var NewPost = React.createClass({
     this.setState(state)
   },
 
+  handleSubmit: function(){
+    var dataToSubmit = this.dataToSubmit();
+    $.post(this.props.newPostUrl, dataToSubmit, function( data ) {
+      console.log(data);
+    });
+  },
+
+  dataToSubmit: function(){
+    return{
+      post: {
+        author_id: this.state.author_id,
+        body: this.state.contentBody,
+        title: this.state.title
+      }
+    };
+  },
+
   render: function(){
     return(
       <div>
         <h2>Nuevo post</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>
             Título: <br/>
             <input type="text" id="title" name="title" onChange={this.handleChange.bind(this, 'title')}/><br/>
           </label>
           <label>
             Contenido: <br/>
-            <textarea id="body" name="body" cols="50" rows ="4" onChange={this.handleChange.bind(this, 'body')} /><br/>
+            <textarea id="contentBody" name="contentBody" cols="50" rows ="4" onChange={this.handleChange.bind(this, 'contentBody')} /><br/>
           </label>
           <label>
             Autor: <br/>
+            <AuthorsInput authors={this.state.authors} handleChange={this.handleChange.bind(this, 'author_id')} selectedAuthor={this.state.author_id}/>
           </label>
+
+          <br/> <br/>
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );

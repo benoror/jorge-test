@@ -20,11 +20,10 @@ var PostsContainer = React.createClass({
   },
 
   getPosts: function(){
-    var posts = this.state.posts.map(function(post){
+    return this.state.posts.map(function(post){
       return(<Post title={post["attributes"]["title"]} bodyContent={post["attributes"]["body"]}
         authorName={post["attributes"]["author-name"]} key={post["id"]}/>);
     });
-    return posts;
   },
 
   render: function(){
