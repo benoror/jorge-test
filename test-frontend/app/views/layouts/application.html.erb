@@ -10,6 +10,13 @@
 
   <body>
     <h1>Test Fronted</h1>
+    <ul id="navbar-container">
+      <li>
+        <%= link_to 'inicio', root_path %>
+        |
+        <%= link_to 'nuevo post', new_post_path %>
+      </li>
+    </ul>
     <%= yield %>
   </body>
 </html>

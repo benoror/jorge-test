@@ -1,4 +1,7 @@
 var PostsContainer = React.createClass({
+  propTypes: {
+    fetchPostsUrl: React.PropTypes.string.isRequired
+  },
 
   getInitialState: function(){
     return{

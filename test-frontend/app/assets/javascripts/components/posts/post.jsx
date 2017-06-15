@@ -1,4 +1,10 @@
 var Post = React.createClass({
+  propTypes: {
+    authorName: React.PropTypes.string.isRequired,
+    bodyContent: React.PropTypes.string.isRequired,
+    title: React.PropTypes.string.isRequired
+  },
+
   render: function(){
     return(
       <div>
