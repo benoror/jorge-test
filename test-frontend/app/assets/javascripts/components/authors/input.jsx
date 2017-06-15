@@ -15,6 +15,7 @@ var AuthorsInput = React.createClass({
     return(
       <select id="author_id" name="author_id" value={this.props.selectedAuthor}
         onChange={this.props.handleChange}>
+        <option value=''>Seleccione una opción</option>;
         {this.showOptions(this.props.authors)}
       </select>
     );

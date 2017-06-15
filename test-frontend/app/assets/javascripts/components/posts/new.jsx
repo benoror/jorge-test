@@ -29,11 +29,15 @@ var NewPost = React.createClass({
     this.setState(state)
   },
 
-  handleSubmit: function(){
+  handleSubmit: function(e){
     var dataToSubmit = this.dataToSubmit();
     $.post(this.props.newPostUrl, dataToSubmit, function( data ) {
-      console.log(data);
-    });
+      alert("Post realizado");
+    })
+      .fail(function(){
+        alert("Ocurrió un error, verifique el form");
+      });
+    e.preventDefault();
   },
 
   dataToSubmit: function(){
